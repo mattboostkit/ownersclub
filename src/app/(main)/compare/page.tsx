@@ -26,7 +26,7 @@ const COLORS = ['#00e0ff', '#ff6b6b', '#feca57', '#48dbfb']
 
 function EmptyState() {
   return (
-    <main className="min-h-screen bg-black">
+    <div className="bg-black">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-md mx-auto">
           <div className="w-20 h-20 mx-auto mb-6 bg-zinc-900 rounded-full flex items-center justify-center">
@@ -56,7 +56,7 @@ function EmptyState() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
 
@@ -332,7 +332,7 @@ export default function ComparePage() {
     }))
 
   return (
-    <main className="min-h-screen bg-black pb-24">
+    <div className="bg-black pb-24">
       {/* Header */}
       <section className="bg-gradient-to-b from-zinc-900 to-black py-8 border-b border-zinc-800">
         <div className="container mx-auto px-4">
@@ -682,6 +682,6 @@ export default function ComparePage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

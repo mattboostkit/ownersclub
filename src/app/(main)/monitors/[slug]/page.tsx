@@ -121,7 +121,7 @@ export default async function MonitorDetailPage({
   }
 
   return (
-    <main className="min-h-screen bg-black">
+    <div className="bg-black">
       {/* Breadcrumbs */}
       <div className="bg-zinc-900 border-b border-zinc-800">
         <div className="container mx-auto px-4 py-4">
@@ -427,7 +427,7 @@ export default async function MonitorDetailPage({
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

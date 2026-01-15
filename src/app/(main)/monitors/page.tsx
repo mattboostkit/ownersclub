@@ -225,7 +225,7 @@ async function FilterSidebar() {
 
 export default function MonitorsPage() {
   return (
-    <main className="min-h-screen bg-black">
+    <div className="bg-black">
       {/* Hero */}
       <section className="bg-gradient-to-b from-zinc-900 to-black py-16 border-b border-zinc-800">
         <div className="container mx-auto px-4">
@@ -278,7 +278,7 @@ export default function MonitorsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 
