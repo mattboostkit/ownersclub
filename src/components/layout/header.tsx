@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Monitor, Search, Menu, X, MessageSquare, Star, Trophy } from "lucide-react";
+import { Monitor, Search, Menu, X, MessageSquare, Star, Trophy, Ruler } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Monitors", href: "/monitors", icon: Monitor },
+  { name: "Size Compare", href: "/tools/size-compare", icon: Ruler },
   { name: "Reviews", href: "/reviews", icon: Star },
   { name: "Community", href: "/community", icon: MessageSquare },
-  { name: "Leaderboard", href: "/leaderboard", icon: Trophy },
 ];
 
 export function Header() {
