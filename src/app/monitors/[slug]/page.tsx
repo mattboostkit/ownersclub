@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import { monitorBySlugQuery, monitorSlugsQuery } from '@/sanity/lib/queries'
+import { DetailCompareButton } from '@/components/monitors/detail-compare-button'
 
 interface Monitor {
   _id: string
@@ -236,7 +237,7 @@ export default async function MonitorDetailPage({
 
               {/* Categories */}
               {monitor.categories && monitor.categories.length > 0 && (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {monitor.categories.map((category) => (
                     <Link
                       key={category._id}
@@ -248,6 +249,9 @@ export default async function MonitorDetailPage({
                   ))}
                 </div>
               )}
+
+              {/* Compare Button */}
+              <DetailCompareButton monitor={monitor} />
             </div>
           </div>
         </div>
