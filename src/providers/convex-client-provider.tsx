@@ -1,33 +1,22 @@
 "use client";
 
 import { ReactNode } from "react";
-import { ClerkProvider, useAuth } from "@clerk/nextjs";
-import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { ConvexReactClient } from "convex/react";
-import { dark } from "@clerk/themes";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 
 const convex = new ConvexReactClient(
-  process.env.NEXT_PUBLIC_CONVEX_URL as string
+  process.env.NEXT_PUBLIC_CONVEX_URL || ""
 );
 
 export function ConvexClientProvider({ children }: { children: ReactNode }) {
+  // Simple provider without Clerk for now - can add auth later
+  if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
+    // If no Convex URL, just render children without provider
+    return <>{children}</>;
+  }
+
   return (
-    <ClerkProvider
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-      appearance={{
-        baseTheme: dark,
-        variables: {
-          colorPrimary: "#00e0ff",
-          colorBackground: "#0a0a0a",
-          colorInputBackground: "#1a1a1a",
-          colorText: "#ffffff",
-          colorTextSecondary: "#a0a0a0",
-        },
-      }}
-    >
-      <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-        {children}
-      </ConvexProviderWithClerk>
-    </ClerkProvider>
+    <ConvexProvider client={convex}>
+      {children}
+    </ConvexProvider>
   );
 }

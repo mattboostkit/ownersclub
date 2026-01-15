@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Monitor, Search, Menu, X, MessageSquare, Star, Trophy } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -65,18 +64,13 @@ export function Header() {
 
             <ThemeToggle />
 
-            <SignedOut>
-              <Link href="/sign-in">
-                <Button variant="ghost" size="sm">Sign In</Button>
-              </Link>
-              <Link href="/sign-up">
-                <Button size="sm" className="hidden sm:inline-flex">Join the Club</Button>
-              </Link>
-            </SignedOut>
-
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+            {/* Auth buttons - placeholder until Clerk is connected */}
+            <Link href="/sign-in">
+              <Button variant="ghost" size="sm">Sign In</Button>
+            </Link>
+            <Link href="/sign-up">
+              <Button size="sm" className="hidden sm:inline-flex">Join the Club</Button>
+            </Link>
 
             <Button
               variant="ghost"
