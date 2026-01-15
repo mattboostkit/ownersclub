@@ -75,6 +75,7 @@ function ComparisonChart({
   if (validData.length === 0) return null
 
   const maxValue = Math.max(...validData.map((d) => d.value))
+  const roundedMax = Math.ceil(maxValue * 1.1)
   const bestValue = higherIsBetter
     ? Math.max(...validData.map((d) => d.value))
     : Math.min(...validData.map((d) => d.value))
@@ -85,7 +86,13 @@ function ComparisonChart({
       <div className="h-48">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={validData} layout="vertical">
-            <XAxis type="number" domain={[0, maxValue * 1.1]} tick={{ fill: '#a1a1aa' }} />
+            <XAxis
+              type="number"
+              domain={[0, roundedMax]}
+              tick={{ fill: '#a1a1aa' }}
+              tickFormatter={(value) => Math.round(value).toString()}
+              allowDecimals={false}
+            />
             <YAxis
               type="category"
               dataKey="name"
@@ -98,6 +105,8 @@ function ComparisonChart({
                 border: '1px solid #27272a',
                 borderRadius: '8px',
               }}
+              labelStyle={{ color: '#ffffff' }}
+              itemStyle={{ color: '#00e0ff' }}
               formatter={(value) => [`${value}${unit}`, title]}
             />
             <Bar dataKey="value" radius={[0, 4, 4, 0]}>
@@ -186,6 +195,8 @@ function ColourGamutRadar({ monitors }: { monitors: CompareMonitor[] }) {
                 border: '1px solid #27272a',
                 borderRadius: '8px',
               }}
+              labelStyle={{ color: '#ffffff' }}
+              itemStyle={{ color: '#00e0ff' }}
               formatter={(value) => [`${value}%`, '']}
             />
           </RadarChart>
